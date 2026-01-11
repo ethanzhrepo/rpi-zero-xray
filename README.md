@@ -29,6 +29,15 @@ Raspberry Pi Zero 2 W (Exit Node)
 - If you need REALITY on the frontend of the relay server (Client to Relay), please configure the relay server's inbound yourself.
 - **DO NOT** expose this exit node directly to the public internet; it must be accessed via Cloudflare Tunnel.
 
+> **⚠️ Technical Confrontation Limitations**
+>
+> This configuration does **NOT** include **REALITY masking**, **xtls-rprx-vision flow control**, or **fallback** mechanisms.
+> *   It is **NOT** suitable for high-stealth or highly confidential links.
+> *   It is intended **ONLY** for simple exit node usage.
+> *   It does **NOT** possess advanced technical counter-censorship capabilities.
+>
+> If you have strict requirements for link characteristic confidentiality, you **MUST** strictly configure and enable `xtls-vision` flow control, fallback, and REALITY-related configurations manually.
+
 **Encryption Link Explanation:**
 ```
 Client → Relay Server: User-configured encryption needed (e.g., VLESS+REALITY, VMess+TLS, etc.)
