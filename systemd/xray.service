@@ -1,0 +1,35 @@
+[Unit]
+Description=Xray VLESS Exit Node
+Documentation=https://github.com/XTLS/Xray-core
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=xray
+Group=xray
+ExecStart=/opt/xray-exit/bin/xray run -config /etc/xray-exit/xray.json
+Restart=always
+RestartSec=3
+LimitNOFILE=65536
+
+# Hardening
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/log/xray-exit
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+RestrictNamespaces=true
+LockPersonality=true
+MemoryDenyWriteExecute=false
+RestrictRealtime=true
+RestrictSUIDSGID=true
+RemoveIPC=true
+PrivateMounts=true
+
+[Install]
+WantedBy=multi-user.target

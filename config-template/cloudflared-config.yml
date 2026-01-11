@@ -1,0 +1,9 @@
+tunnel: {{TUNNEL_ID}}
+credentials-file: /etc/cloudflared/{{TUNNEL_ID}}.json
+
+# TCP ingress to local Xray service
+ingress:
+  - service: tcp://127.0.0.1:{{XRAY_PORT}}
+
+# Catch-all rule (required by Cloudflare)
+  - service: http_status:404
